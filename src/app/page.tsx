@@ -26,13 +26,14 @@ export default function Home() {
     const anchors = document.querySelectorAll("#menu a");
     anchors.forEach(function(anchor) {
       anchor.addEventListener("mousedown", async function(event) {
-        if (myslider.current && myslider.current.swiper) {
-          const swiper = myslider.current.swiper;
+        if (myslider.current && myslider.current) {
+          const myswiper = myslider.current.swiper;
           console.log('Mukesh');
           event.preventDefault();
-          document.querySelector("#menu .active").classList.remove("active");
+          const element = document.querySelector("#menu .active");
+          element.classList.remove("active");
           anchor.classList.add("active");
-          swiper.slideTo(Array.from(anchor.parentNode.children).indexOf(anchor));
+          myswiper.slideTo(Array.from(anchor.parentNode.children).indexOf(anchor));
           setTimeout(hideMenu, 1750);
         } else {
           console.error('Swiper instance not found');
@@ -46,14 +47,14 @@ export default function Home() {
     document.querySelector('.wrapper').classList.add('vis-menu');
     document.querySelector('.nav-button').classList.add('cmenu');
     document.querySelectorAll(".elem").forEach(function(elem) {
-      elem.style.display = 'block';
+      elem['style'].display = 'block'
     });
     setTimeout(function() {
       document.querySelectorAll(".elem-anim").forEach(function(elem, index) {
         setTimeout(function() {
-          elem.style.transition = 'opacity 0.6s ease-out, margin-top 0.6s ease-out';
-          elem.style.opacity = '1';
-          elem.style.marginTop = '0';
+          elem['style'].transition = 'opacity 0.6s ease-out, margin-top 0.6s ease-out';
+          elem['style'].opacity = '1';
+          elem['style'].marginTop = '0';
         }, 150 * index);
       });
     }, 650);
@@ -64,14 +65,14 @@ export default function Home() {
     document.querySelector('.nav-button').classList.remove('cmenu');
     document.querySelectorAll(".elem-anim").forEach(function(elem, index) {
       setTimeout(function() {
-        elem.style.transition = 'opacity 0.6s ease-out, margin-top 0.6s ease-out';
-        elem.style.opacity = '0';
-        elem.style.marginTop = '-150px';
+        elem['style'].transition = 'opacity 0.6s ease-out, margin-top 0.6s ease-out';
+        elem['style'].opacity = '0';
+        elem['style'].marginTop = '-150px';
       }, 150 * index);
     });
     setTimeout(function() {
       document.querySelectorAll(".elem").forEach(function(elem) {
-        elem.style.display = 'none';
+        elem['style'].display = 'none';
       });
       document.querySelector('.wrapper').classList.remove('vis-menu');
     }, 650);
